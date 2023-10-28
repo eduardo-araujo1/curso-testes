@@ -2,6 +2,7 @@ package com.eduardo.demo.domain;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,14 @@ public class PlanetService {
 
     public Optional<Planet> getByName(String name) {
         return planetRepository.findByName(name);
+    }
+
+    public List<Planet> list(String terrain, String climate) {
+        Example<Planet> query = QueryBuilder.makeQuery(new Planet(climate, terrain));
+        return planetRepository.findAll(query);
+    }
+
+    public void remove(Long id) {
+        planetRepository.deleteById(id);
     }
 }
