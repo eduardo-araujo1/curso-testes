@@ -13,6 +13,17 @@ public class Planet {
     private String climate;
     private String terrain;
 
+    public Planet(){
+
+    }
+
+    public Planet(Long id, String name, String climate, String terrain) {
+        this.id = id;
+        this.name = name;
+        this.climate = climate;
+        this.terrain = terrain;
+    }
+
     public Planet(String name, String climate, String terrain) {
         this.name = name;
         this.climate = climate;
